@@ -59,7 +59,7 @@ const Header = () => {
         <div className="container">
           <div className="nav-brand">
             <Link to="/" style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
-              <img src="/images/logo/logo.png" alt="Logo" style={{height: '64px', width: '64px', objectFit: 'contain'}} />
+              <img src="/nvfavicon.ico" alt="Logo ESEF Learn" style={{height: '48px', width: '88px', objectFit: 'contain'}} />
               <h2 style={{margin: 0}}>ESEF Learn</h2>
             </Link>
           </div>

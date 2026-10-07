@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
-import Button from "../common/Button"
+import Button from "../common/Button";
 import imageHero from '../assets/LogoHeroSection.jpeg';
 import '../styles/HeroSection.css';
 
+// Nom de la plateforme : à modifier ici une seule fois
+const PLATFORM_NAME = "Nibras ESEF";
 
 const HeroSection = () => {
-  // Fonction pour animer le compteur
+  // Animation du compteur (gère maintenant un suffixe optionnel, ex. "/7")
   const animateCounter = (element) => {
-    const target = parseInt(element.getAttribute('data-value'));
+    const target = parseInt(element.getAttribute('data-value'), 10);
+    const suffix = element.getAttribute('data-suffix') || '';
     const duration = 2000;
     const step = target / (duration / 16);
     let current = 0;
@@ -15,32 +18,29 @@ const HeroSection = () => {
     const updateCounter = () => {
       current += step;
       if (current < target) {
-        element.textContent = Math.floor(current);
+        element.textContent = Math.floor(current) + suffix;
         requestAnimationFrame(updateCounter);
       } else {
-        element.textContent = target;
+        element.textContent = target + suffix;
       }
     };
 
     updateCounter();
   };
 
-  // Observer pour détecter quand les stats sont visibles
+  // Déclenche l'animation quand les statistiques deviennent visibles
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const numbers = entry.target.querySelectorAll('.stat-number');
-          numbers.forEach(animateCounter);
+          entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.5 });
 
     const statsSection = document.querySelector('.hero-stats');
-    if (statsSection) {
-      observer.observe(statsSection);
-    }
+    if (statsSection) observer.observe(statsSection);
 
     return () => observer.disconnect();
   }, []);
@@ -55,39 +55,50 @@ const HeroSection = () => {
         <div className="geo-triangle"></div>
         <div className="geo-dots"></div>
       </div>
-      
+
       <div className="container">
         <div className="hero-content">
           <div className="hero-text">
+            <span className="hero-badge">{PLATFORM_NAME} · ESEF</span>
+
             <h1>
-              Atteignez <span className="text-highlight dynamic-excellence">l'excellence</span>
+              Apprenez <span className="text-highlight dynamic-excellence">à votre rythme</span>
               <br />
-              avec nos cours <br />
-              <span className="text-primary">de soutien universitaire</span>
+              guidé par <br />
+              <span className="text-primary">l'intelligence artificielle</span>
             </h1>
-            {/* Statistiques et boutons conservés */}
+
+         <p className="hero-description">
+  La plateforme numérique de l'ESEF qui réunit <strong>cours</strong>,{' '}
+  <strong>vidéos</strong>, <strong>exercices</strong> et <strong>quiz</strong>{' '}
+  dans un seul espace, avec un <strong>assistant IA</strong> qui s'adapte
+  à votre niveau et à vos difficultés.
+</p>
+
             <div className="hero-stats">
               <div className="stat-item animate">
-                <span className="stat-number" data-value="5">0</span>
-                <span className="stat-label">Ans d'expérience</span>
+                <span className="stat-number" data-value="4">0</span>
+                <span className="stat-label">Types de ressources</span>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item animate">
-                <span className="stat-number" data-value="1000">0</span>
-                <span className="stat-label">Étudiants formés</span>
+                <span className="stat-number" data-value="24" data-suffix="/7">0</span>
+                <span className="stat-label">Assistant IA</span>
               </div>
             </div>
+
             <div className="hero-buttons">
-              <Button variant="primary" to="/courses">Découvrir nos cours</Button>
+              <Button variant="primary" to="/courses">Accéder aux cours</Button>
               <Button variant="outline" to="/student/login">Espace étudiant</Button>
             </div>
           </div>
+
           <div className="hero-image">
             <div className="geometric-pattern">
               <div className="geometric-shapes"></div>
               <img
                 src={imageHero}
-                alt="Cours de soutien universitaire"
+                alt={`Plateforme éducative ${PLATFORM_NAME} de l'ESEF`}
                 className="student-image"
               />
             </div>
@@ -95,7 +106,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HeroSection
+export default HeroSection;
