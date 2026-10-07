@@ -476,31 +476,6 @@ body {
   color: #94a3b8;
 }
 
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.whatsapp-float a {
-  background: #25d366;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  transition: transform 0.3s;
-}
-
-.whatsapp-float a:hover {
-  transform: scale(1.05);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-content,
@@ -817,16 +792,6 @@ body {
     font-size: 1rem;
   }
 
-  /* WhatsApp button responsive */
-  .whatsapp-float {
-    bottom: 15px;
-    right: 15px;
-  }
-
-  .whatsapp-float a {
-    padding: 12px 15px;
-    font-size: 0.9rem;
-  }
 }
 
 /* Très petits écrans (320px et moins) */
@@ -904,9 +869,4 @@ img, video, iframe {
   .service-card { margin: 0; }
 }
 
-/* Bouton WhatsApp fixe: éviter de créer une largeur supplémentaire */
-.whatsapp-float {
-  right: clamp(10px, 2vw, 20px);
-  bottom: clamp(10px, 2vw, 20px);
-}
 
