@@ -42,8 +42,9 @@
 }
 
 .navbar.scrolled {
-  box-shadow: 0 4px 30px rgba(52, 152, 219, 0.15);
-  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 0;
+  box-shadow: 0 6px 30px rgba(15, 23, 42, 0.12);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .navbar::before {
@@ -75,6 +76,7 @@
 .nav-brand {
   position: relative;
   z-index: 1002;
+  flex: 0 0 auto;
 }
 
 .nav-brand a {
@@ -86,35 +88,22 @@
   transform: translateY(-2px);
 }
 
-.nav-brand h2 {
-  color: #3498db;
-  font-size: 1.9rem;
-  font-weight: 800;
-  margin: 0;
-  background: linear-gradient(135deg, #3498db 0%, #5dade2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  position: relative;
-  animation: fadeInLeft 0.8s ease-out;
+/* Logo de marque */
+.nav-brand .brand-link {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  line-height: 0;
 }
 
-.nav-brand h2::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #3498db, #5dade2);
-  transition: width 0.4s ease;
-  border-radius: 1px;
+.brand-logo {
+  display: block;
+  height: 72px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
-
-.nav-brand:hover h2::after {
-  width: 100%;
-}
-
 /* Menu de navigation - VISIBLE SUR DESKTOP */
 .nav-menu {
   display: flex;
@@ -155,25 +144,19 @@
   width: 100%;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
   color: #3498db;
+}
+
+.nav-link:hover {
   transform: translateY(-2px);
 }
 
-/* Lien spécial recrutement */
-.recruitment-link {
-  position: relative;
-}
-
-.recruitment-link::before {
-  content: '💼';
-  margin-right: 6px;
-  font-size: 0.9rem;
-}
 
 /* Bouton principal */
 .nav-menu .btn-primary {
-  background: linear-gradient(135deg, #3498db, #5dade2);
+  background: linear-gradient(135deg, #0284c7, #0c4a6e);
   color: white;
   padding: 12px 24px;
   border-radius: 25px;
@@ -208,8 +191,7 @@
   box-shadow: 0 6px 25px rgba(52, 152, 219, 0.4);
   color: white;
   text-decoration: none;
-  background: linear-gradient(135deg, #2980b9, #3498db);
-}
+  background: linear-gradient(135deg, #0369a1, #0284c7);}
 
 /* Bouton menu mobile - MASQUÉ SUR DESKTOP */
 .mobile-menu-btn {
@@ -302,7 +284,7 @@
 }
 
 /* TABLETTE - Menu normal encore visible */
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 1024px) and (min-width: 901px) {
   .mobile-menu-btn {
     display: none; /* Masqué sur tablette aussi */
   }
@@ -316,13 +298,10 @@
     font-size: 0.95rem;
   }
   
-  .nav-brand h2 {
-    font-size: 1.7rem;
-  }
 }
 
-/* MOBILE - Bouton hamburger visible, menu caché par défaut */
-@media (max-width: 768px) {
+/* TABLETTE ET MOBILE - Bouton hamburger visible */
+@media (max-width: 900px) {
   .mobile-menu-btn {
     display: flex; /* Affiché uniquement sur mobile */
   }
@@ -408,9 +387,6 @@
     padding: 12px 0;
   }
 
-  .nav-brand h2 {
-    font-size: 1.6rem;
-  }
 }
 
 @media (max-width: 480px) {
@@ -421,10 +397,6 @@
 
   .navbar {
     padding: 10px 0;
-  }
-
-  .nav-brand h2 {
-    font-size: 1.4rem;
   }
 
   .nav-menu {
@@ -447,20 +419,13 @@
 }
 
 @media (max-width: 320px) {
-  .nav-brand h2 {
-    font-size: 1.2rem;
-  }
-
   .header-content {
     flex-direction: column;
     gap: 4px;
   }
 }
 
-/* Effets de scroll */
-.header.scrolled .navbar {
-  transform: translateY(-2px);
-}
+
 
 /* Accessibilité et focus states */
 .nav-link:focus,
@@ -475,4 +440,11 @@
 .nav-menu,
 .mobile-menu-btn {
   will-change: transform;
+}
+@media (max-width: 900px) {
+  .brand-logo { height: 60px; }
+}
+
+@media (max-width: 480px) {
+  .brand-logo { height: 52px; }
 }

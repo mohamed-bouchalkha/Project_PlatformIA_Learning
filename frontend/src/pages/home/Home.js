@@ -15,7 +15,7 @@ const Home = () => {
       <AnnonceSection />
       <WhyChooseUsSection />
       {/* <ServicesSection /> */}
-      <ContactSection />  
+      {/* <ContactSection />   */}
       <Footer />
     </div>
   )

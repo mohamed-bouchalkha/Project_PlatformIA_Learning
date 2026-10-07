@@ -1,84 +1,155 @@
-import React from 'react'
+import React from 'react';
+import Button from "../common/Button";
 
-const GoogleMeetIcon = () => (
-  <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',width:'2.7em',height:'2.7em',background:'#ebf3fd',borderRadius:'50%',boxShadow:'0 2px 8px rgba(52,152,219,0.15)'}}>
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <rect width="32" height="32" rx="16" fill="#ebf3fd"/>
-      <path d="M10 12v8a2 2 0 002 2h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2zm2 0h8v8h-8v-8zm10 4l4 3.5V14.5L22 16z" fill="#3498db"/>
-      <circle cx="16" cy="16" r="5" fill="#5dade2"/>
-    </svg>
-  </span>
+// Même nom que dans le HeroSection
+const PLATFORM_NAME = "ESEF Learn";
+
+// Icônes SVG cohérentes (style trait)
+const Icon = ({ children }) => (
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+       strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {children}
+  </svg>
 );
 
-const SoloIcon = () => (
-  <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',width:'2.7em',height:'2.7em',background:'#fef9e7',borderRadius:'50%',boxShadow:'0 2px 8px rgba(255,193,7,0.15)'}}>
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="12" r="6" fill="#f1c40f"/>
-      <rect x="8" y="20" width="16" height="6" rx="3" fill="#f39c12"/>
-    </svg>
-  </span>
-);
+const icons = {
+  courses: (
+    <Icon>
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </Icon>
+  ),
+  videos: (
+    <Icon>
+      <circle cx="12" cy="12" r="10" />
+      <polygon points="10 8 16 12 10 16 10 8" />
+    </Icon>
+  ),
+  quiz: (
+    <Icon>
+      <rect x="8" y="2" width="8" height="4" rx="1" />
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+      <path d="m9 14 2 2 4-4" />
+    </Icon>
+  ),
+  ai: (
+    <Icon>
+      <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
+      <path d="M19 3v4M21 5h-4" />
+    </Icon>
+  ),
+  progress: (
+    <Icon>
+      <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+      <polyline points="16 7 22 7 22 13" />
+    </Icon>
+  ),
+  chat: (
+    <Icon>
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z" />
+    </Icon>
+  ),
+};
 
-const CommunityIcon = () => (
-  <span style={{display:'inline-flex',alignItems:'center',justifyContent:'center',width:'2.7em',height:'2.7em',background:'#e8f8f5',borderRadius:'50%',boxShadow:'0 2px 8px rgba(26,188,156,0.15)'}}>
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill="#e8f8f5"/>
-      <circle cx="10" cy="14" r="4" fill="#1abc9c"/>
-      <circle cx="22" cy="14" r="4" fill="#1abc9c"/>
-      <rect x="8" y="20" width="16" height="4" rx="2" fill="#16a085"/>
-    </svg>
-  </span>
-);
+const reasons = [
+  {
+    title: "Cours centralisés",
+    description:
+      "Retrouvez tous vos supports au même endroit, organisés par module et mis à jour par vos coordinateurs pédagogiques.",
+    tags: ["PDF", "Présentations", "Résumés"],
+    icon: icons.courses,
+    accent: "#3498db",
+    accentDark: "#2980b9",
+  },
+  {
+    title: "Vidéos pédagogiques",
+    description:
+      "Visionnez des vidéos liées à chaque cours ou notion, puis vérifiez votre compréhension avec une activité associée.",
+    tags: ["Par notion", "Quiz associé"],
+    icon: icons.videos,
+    accent: "#8b5cf6",
+    accentDark: "#6d28d9",
+  },
+  {
+    title: "Quiz et exercices interactifs",
+    description:
+      "Testez vos connaissances et consultez vos résultats, avec les réponses correctes et des explications lorsque disponibles.",
+    tags: ["QCM", "Vrai/Faux", "Réponses courtes"],
+    icon: icons.quiz,
+    accent: "#10b981",
+    accentDark: "#059669",
+  },
+  {
+    title: "Assistant IA adaptatif",
+    description:
+      "Une explication plus simple, un exemple concret, un exercice sur mesure : l'IA s'adapte à votre niveau, à vos résultats et à vos difficultés.",
+    tags: ["Personnalisé", "Selon vos quiz", "Disponible 24/7"],
+    icon: icons.ai,
+    featured: true,
+  },
+  {
+    title: "Suivi de progression",
+    description:
+      "Un tableau de bord clair pour visualiser vos cours, vos résultats et votre évolution, et savoir quelles notions retravailler.",
+    tags: ["Mes résultats", "Ma progression"],
+    icon: icons.progress,
+    accent: "#f59e0b",
+    accentDark: "#d97706",
+  },
+  {
+    title: "Chatbot et communication",
+    description:
+      "Trouvez rapidement une information, localisez un cours ou soyez orienté vers l'enseignant ou le responsable concerné.",
+    tags: ["Orientation", "Enseignants"],
+    icon: icons.chat,
+    accent: "#06b6d4",
+    accentDark: "#0891b2",
+  },
+];
 
 const WhyChooseUsSection = () => {
-  const reasons = [
-    {
-      title: "Simplicité",
-      description: "Plateforme intuitive et facile d'utilisation. Accédez à vos cours en quelques clics.",
-      icon: "📚",
-    },
-    {
-      title: "Rapidité",
-      description: "Réponses immédiates à vos questions. Support réactif et accompagnement en temps réel.",
-      icon: "⚡",
-    },
-    {
-      title: "Fiabilité",
-      description: "Méthodes pédagogiques éprouvées. Résultats garantis avec un suivi personnalisé.",
-      icon: "🎯",
-    },
-    {
-      title: "Cours en direct Google Meet",
-      description: "Travaillez en direct via Google Meet avec votre enseignant. Toutes les séances sont enregistrées et accessibles à tout moment.",
-      icon: <GoogleMeetIcon />,
-    },
-    {
-      title: "Travail individuel (solo)",
-      description: "Bénéficiez de séances personnalisées en solo pour progresser à votre rythme et selon vos besoins.",
-      icon: <SoloIcon />,
-    },
-    {
-      title: "Communauté et accompagnement",
-      description: "Rejoignez une communauté active d'étudiants et bénéficiez d'un accompagnement continu pour réussir vos objectifs.",
-      icon: <CommunityIcon />,
-    },
-  ];
-
   return (
     <section className="why-choose-section" id="services">
       <div className="container">
-        <h2 className="section-title">
-          Pourquoi les étudiants choisissent <span className="text-primary">ESEF Learn</span>
-        </h2>
+        <div className="why-header">
+          <span className="why-eyebrow">Pourquoi {PLATFORM_NAME} ?</span>
+          <h2 className="section-title">
+            Tout ce qu'il faut pour <span className="why-brand">réussir vos études</span>
+          </h2>
+          <p className="why-subtitle">
+            Une plateforme unique pour apprendre, vous entraîner et progresser,
+            accompagné par une intelligence artificielle qui s'adapte à vous.
+          </p>
+        </div>
 
         <div className="reasons-grid">
           {reasons.map((reason, index) => (
-            <div key={index} className="reason-card" tabIndex={0}>
+            <div
+              key={reason.title}
+              className={`reason-card${reason.featured ? ' featured' : ''}`}
+              tabIndex={0}
+              style={{
+                '--accent': reason.accent,
+                '--accent-dark': reason.accentDark,
+                animationDelay: `${index * 0.08}s`,
+              }}
+            >
+              <span className="reason-number">{String(index + 1).padStart(2, '0')}</span>
               <div className="reason-icon">{reason.icon}</div>
               <h3>{reason.title}</h3>
               <p>{reason.description}</p>
+              <ul className="reason-tags">
+                {reason.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
             </div>
           ))}
+        </div>
+
+        <div className="why-cta">
+          <Button variant="primary" to="/courses">Explorer les cours</Button>
+          <Button variant="outline" to="/student/login">Se connecter</Button>
         </div>
       </div>
     </section>

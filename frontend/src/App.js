@@ -78,7 +78,7 @@ function App() {
         <Helmet>
           <title>ESEF Learn</title>
           <meta name="description" content="Préparation concours, cours en ligne, espace étudiant et recrutement." />
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/nvfavicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
         </Helmet>
         <div className="App">

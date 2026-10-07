@@ -4,7 +4,7 @@ import imageHero from '../assets/LogoHeroSection.jpeg';
 import '../styles/HeroSection.css';
 
 // Nom de la plateforme : à modifier ici une seule fois
-const PLATFORM_NAME = "Nibras ESEF";
+const PLATFORM_NAME = "ESEF Learn";
 
 const HeroSection = () => {
   // Animation du compteur (gère maintenant un suffixe optionnel, ex. "/7")
