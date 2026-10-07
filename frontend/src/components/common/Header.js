@@ -71,13 +71,20 @@ const Header = () => {
         <div className="container">
           <div className="nav-brand">
             <Link to="/" className="brand-link" onClick={closeMenu}>
-              <img
-                src="/nvfavicon.ico"
-                alt={`Logo ${PLATFORM_NAME}`}
-                className="brand-logo"
-              />
+<img
+  src="/images/logo/logo.png"
+  alt={`Logo ${PLATFORM_NAME}`}
+  className="brand-logo"
+/>
+              <span className="brand-name">{PLATFORM_NAME}</span>
             </Link>
           </div>
+
+          <div
+            className={`nav-overlay ${isMenuOpen ? "show" : ""}`}
+            onClick={closeMenu}
+            aria-hidden="true"
+          />
 
           <div ref={navMenuRef} className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
             <Link
@@ -127,7 +134,14 @@ const Header = () => {
             aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? "✕" : "☰"}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              {isMenuOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
           </button>
         </div>
       </nav>
