@@ -67,7 +67,7 @@ const ProtectedStudentRoute = ({ children }) => {
 
 // Fallback au cas où le HTML public n’est pas modifié
 if (typeof document !== "undefined") {
-  document.title = "E‑Learning by Ilyas";
+  document.title = "ESEF Learn";
 }
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
       <Router>
         {/* Métadonnées globales */}
         <Helmet>
-          <title>E‑Learning by Ilyas</title>
+          <title>ESEF Learn</title>
           <meta name="description" content="Préparation concours, cours en ligne, espace étudiant et recrutement." />
           <link rel="icon" href="/favicon.ico" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />

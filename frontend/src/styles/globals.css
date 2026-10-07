@@ -81,6 +81,14 @@ body {
   color: #f97316;
 }
 
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
 .text-primary {
   color: #3498db;
 }
@@ -891,10 +899,8 @@ img, video, iframe {
   transform: translateY(-50%);
 }
 
-/* Grilles/cartoons qui pourraient dépasser sur mobile */
+/* Cartes qui pourraient dépasser sur mobile */
 @media (max-width: 768px){
-  .screenshot-card { transform: none; max-width: 100%; margin: 0; }
-  .screenshots-grid { overflow: hidden; }
   .service-card { margin: 0; }
 }
 

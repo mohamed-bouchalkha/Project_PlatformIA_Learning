@@ -31,33 +31,7 @@ const Header = () => {
     }
   }, [location.state, navigate, location.pathname])
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [schoolIndex, setSchoolIndex] = useState(0)
-  const schools = ["ENSA", "FST", "FS", "EST", "ENS", "ENSAM", "BTS", "DTS" , "PREPARATION AUX CONCOURS"]
   const navMenuRef = useRef(null)
-
-  const getSchoolColor = (school) => {
-    const colors = {
-      ENSA: "#de34d6ff",
-      FST: "#10b981",
-      FS: "#8b5cf6",
-      EST: "#e11d48",
-      ENS: "#ea580c",
-      ENSAM: "#0ea5e9",
-      BTS : "#2563eb",
-      DTS : "#4f46e5",
-      PREPARATION_AUX_CONCOURS : "#f59e0b",
-
-    }
-    return colors[school] || "#2563eb"
-  }
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setSchoolIndex((prevIndex) => (prevIndex + 1) % schools.length)
-    }, 2000)
-
-    return () => clearInterval(interval)
-  }, [schools.length])
 
   // Fermer le menu quand on clique en dehors
   useEffect(() => {
@@ -81,39 +55,12 @@ const Header = () => {
 
   return (
     <header className="header">
-      <div className="header-top">
-        <div className="container">
-          <div className="header-info">
-            <div className="header-content">
-              <span>Cours de soutien en ligne </span>
-              <span style={{ 
-                color: getSchoolColor(schools[schoolIndex]),
-                fontWeight: "bold",
-                fontSize: "1.1rem",
-                transition: "color 0.3s ease"
-              }}>
-                {schools[schoolIndex]}
-              </span>
-            </div>
-            <div className="contact-info">
-              <span>📞 +212 631-262790</span>
-              <div className="social-links">
-                <a href="https://wa.me/212631262790" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                  📱
-                </a>
-               
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <nav className="navbar">
         <div className="container">
           <div className="nav-brand">
             <Link to="/" style={{display: 'flex', alignItems: 'center', gap: '12px'}}>
               <img src="/images/logo/logo.png" alt="Logo" style={{height: '40px', width: '40px', objectFit: 'contain'}} />
-              <h2 style={{margin: 0}}>E-learning by Ilyas</h2>
+              <h2 style={{margin: 0}}>ESEF Learn</h2>
             </Link>
           </div>
 

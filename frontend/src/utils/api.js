@@ -250,26 +250,9 @@ class ApiService {
     })
   }
 
-  // Méthodes publiques (sans authentification)
-  async getActiveTestimonials() {
-    return await this.request("/api/testimonials/active", {
-      method: "GET",
-      auth: false,
-    })
-  }
-
   async getFeaturedTestimonials(limit = 10) {
     return await this.request(`/api/testimonials/featured?limit=${limit}`, {
       method: "GET",
-      auth: false,
-    })
-  }
-
-
-  async submitTestimonial(testimonialData) {
-    return await this.request("/api/testimonials/submit", {
-      method: "POST",
-      body: JSON.stringify(testimonialData),
       auth: false,
     })
   }
@@ -642,10 +625,7 @@ export const deleteCoursGratuit = apiService.deleteCoursGratuit.bind(apiService)
 // Méthode pour Google Login étudiant
 export const studentGoogleLogin = apiService.studentGoogleLogin.bind(apiService)
 
-// Exports pour les témoignages
-export const getActiveTestimonials = apiService.getActiveTestimonials.bind(apiService)
 export const getFeaturedTestimonials = apiService.getFeaturedTestimonials.bind(apiService)
-export const submitTestimonial = apiService.submitTestimonial.bind(apiService)
 export const getAllTestimonials = apiService.getAllTestimonials.bind(apiService)
 export const updateTestimonial = apiService.updateTestimonial.bind(apiService)
 export const deleteTestimonial = apiService.deleteTestimonial.bind(apiService)

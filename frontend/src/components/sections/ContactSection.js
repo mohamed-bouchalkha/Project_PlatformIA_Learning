@@ -21,7 +21,7 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const phone = "212631262790"
-    const text = `*Nouveau message depuis le site Learning by Ilyas*%0A--------------------%0A*Nom:* ${formData.lastName} ${formData.firstName}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`
+    const text = `*Nouveau message depuis le site ESEF Learn*%0A--------------------%0A*Nom:* ${formData.lastName} ${formData.firstName}%0A*Email:* ${formData.email}%0A*Message:* ${formData.message}`
     const url = `https://wa.me/${phone}?text=${text}`
     window.open(url, "_blank")
   }

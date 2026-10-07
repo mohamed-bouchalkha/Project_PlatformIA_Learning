@@ -10,7 +10,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // index.js
-document.title = "E‑Learning by Ilyas | Accueil";
+document.title = "ESEF Learn | Accueil";
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
