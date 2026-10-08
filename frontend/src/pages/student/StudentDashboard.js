@@ -156,16 +156,15 @@ const StudentDashboard = () => {
                   
                   {/* Affichage de l'image du cours */}
                   <div className="course-image">
-                    <img
-                      src={course.image_filename ? 
-                        `${API_URL}/api/admin/courses/${course.id}/image` :
-                        "/assets/math-course.png"}
-                      alt={course.title}
-                      onError={(e) => {
-                        e.target.src = "/assets/math-course.png"
-                        e.target.onerror = null
-                      }}
-                    />
+                    {course.image_filename ? (
+                      <img
+                        src={`${API_URL}/api/admin/courses/${course.id}/image`}
+                        alt={course.title}
+                        onError={(event) => event.currentTarget.remove()}
+                      />
+                    ) : (
+                      <div className="course-image-placeholder" aria-hidden="true">📚</div>
+                    )}
                   </div>
 
                   <div className="course-content">

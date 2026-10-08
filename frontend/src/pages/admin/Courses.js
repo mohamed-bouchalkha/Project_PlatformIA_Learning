@@ -179,16 +179,15 @@ const Courses = () => {
               {filteredCourses.map((course) => (
                 <div key={course.id} className="course-card-modern">
                   <div className="course-image-modern">
-                    <img
-                      src={course.image_filename ? 
-                        `${API_URL}${course.image_url}` : 
-                        "/assets/math-course.png"}
-                      alt={course.title}
-                      onError={(e) => {
-                        e.target.src = "/assets/math-course.png"
-                        e.target.onerror = null
-                      }}
-                    />
+                    {course.image_filename ? (
+                      <img
+                        src={`${API_URL}${course.image_url}`}
+                        alt={course.title}
+                        onError={(event) => event.currentTarget.remove()}
+                      />
+                    ) : (
+                      <div className="course-image-placeholder-modern" aria-hidden="true">📚</div>
+                    )}
                     <div className="course-overlay-modern">
                       <div className="course-badges-modern">
                         <div className="course-subject-modern">{course.subject}</div>

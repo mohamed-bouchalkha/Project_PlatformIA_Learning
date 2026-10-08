@@ -93,7 +93,7 @@ const Login = () => {
               </svg>
             </div>
             
-            <h1 className={styles.title}>El-earning by Ilyas</h1>
+            <h1 className={styles.title}>ESEF Learn</h1>
             <p className={styles.subtitle}>Connectez-vous pour accéder au tableau de bord</p>
           </div>
           

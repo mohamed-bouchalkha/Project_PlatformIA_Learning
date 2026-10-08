@@ -27,10 +27,7 @@ class Admin(Base):
     # Relations
     courses = relationship("Course", back_populates="admin")
     videos = relationship("Video", back_populates="admin")
-    job_offers = relationship("JobOffer", back_populates="admin")
     announcements = relationship("Announcement", back_populates="admin")
-    gratuit_courses = relationship("GratuitCourse", back_populates="admin")
-    testimonials = relationship("Testimonial", back_populates="admin")
 
 class Course(Base):
     __tablename__ = "courses"
@@ -123,75 +120,75 @@ class Announcement(Base):
     # Relations
     admin = relationship("Admin", back_populates="announcements")
 
-class JobOffer(Base):
-    __tablename__ = "job_offers"
+# class JobOffer(Base):
+#     __tablename__ = "job_offers"
     
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String(255), nullable=False, index=True)
-    company = Column(String(255), nullable=False)
-    location = Column(String(255))
-    description = Column(Text, nullable=False)
-    requirements = Column(Text)
-    benefits = Column(Text)
-    salary_range = Column(String(100))
-    application_deadline = Column(DateTime(timezone=True))
-    is_active = Column(Boolean, default=True)
-    admin_id = Column(Integer, ForeignKey("admins.id"))
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+#     id = Column(Integer, primary_key=True, index=True)
+#     title = Column(String(255), nullable=False, index=True)
+#     company = Column(String(255), nullable=False)
+#     location = Column(String(255))
+#     description = Column(Text, nullable=False)
+#     requirements = Column(Text)
+#     benefits = Column(Text)
+#     salary_range = Column(String(100))
+#     application_deadline = Column(DateTime(timezone=True))
+#     is_active = Column(Boolean, default=True)
+#     admin_id = Column(Integer, ForeignKey("admins.id"))
+#     created_at = Column(DateTime(timezone=True), server_default=func.now())
+#     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     
-    # Relations
-    admin = relationship("Admin", back_populates="job_offers")
-    applications = relationship("JobApplication", back_populates="job_offer")
+#     # Relations
+#     admin = relationship("Admin", back_populates="job_offers")
+#     applications = relationship("JobApplication", back_populates="job_offer")
 
-class JobApplication(Base):
-    __tablename__ = "job_applications"
+# class JobApplication(Base):
+#     __tablename__ = "job_applications"
     
-    id = Column(Integer, primary_key=True, index=True)
-    job_offer_id = Column(Integer, ForeignKey("job_offers.id"), nullable=False)
-    first_name = Column(String(100), nullable=False)
-    last_name = Column(String(100), nullable=False)
-    email = Column(String(255), nullable=False)
-    phone = Column(String(20))
-    cover_letter = Column(Text)
-    cv_filename = Column(String(255))
-    cv_url = Column(String(500))
-    status = Column(String(50), default="pending")
-    admin_notes = Column(Text)
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+#     id = Column(Integer, primary_key=True, index=True)
+#     job_offer_id = Column(Integer, ForeignKey("job_offers.id"), nullable=False)
+#     first_name = Column(String(100), nullable=False)
+#     last_name = Column(String(100), nullable=False)
+#     email = Column(String(255), nullable=False)
+#     phone = Column(String(20))
+#     cover_letter = Column(Text)
+#     cv_filename = Column(String(255))
+#     cv_url = Column(String(500))
+#     status = Column(String(50), default="pending")
+#     admin_notes = Column(Text)
+#     created_at = Column(DateTime(timezone=True), server_default=func.now())
+#     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     
-    # Relations
-    job_offer = relationship("JobOffer", back_populates="applications")
+#     # Relations
+#     job_offer = relationship("JobOffer", back_populates="applications")
 
 
-class GratuitCourse(Base):
-    __tablename__ = "gratuit_courses"
+# class GratuitCourse(Base):
+#     __tablename__ = "gratuit_courses"
     
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String(255), nullable=False)
-    url = Column(String(500), nullable=False)
-    description = Column(Text, nullable=True)
-    category = Column(String(100), default="cours")  # "cours" ou "concours"
-    admin_id = Column(Integer, ForeignKey("admins.id"))
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+#     id = Column(Integer, primary_key=True, index=True)
+#     title = Column(String(255), nullable=False)
+#     url = Column(String(500), nullable=False)
+#     description = Column(Text, nullable=True)
+#     category = Column(String(100), default="cours")  # "cours" ou "concours"
+#     admin_id = Column(Integer, ForeignKey("admins.id"))
+#     created_at = Column(DateTime(timezone=True), server_default=func.now())
+#     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     
-    # Relations
-    admin = relationship("Admin", back_populates="gratuit_courses")
+#     # Relations
+#     admin = relationship("Admin", back_populates="gratuit_courses")
 
-class Testimonial(Base):
-    __tablename__ = "testimonials"
+# class Testimonial(Base):
+#     __tablename__ = "testimonials"
     
-    id = Column(Integer, primary_key=True, index=True)
-    nom = Column(String(255), nullable=False)  # Nom de l'étudiant
-    ecole = Column(String(255), nullable=False)  # École de l'étudiant
-    comment = Column(Text, nullable=False)  # Commentaire/témoignage
-    rating = Column(Integer, default=5)  # Note sur 5 (optionnel)
-    is_active = Column(Boolean, default=True)  # Publié ou non
-    admin_id = Column(Integer, ForeignKey("admins.id"))  # Qui a ajouté
-    created_at = Column(DateTime(timezone=True), server_default=func.now())
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+#     id = Column(Integer, primary_key=True, index=True)
+#     nom = Column(String(255), nullable=False)  # Nom de l'étudiant
+#     ecole = Column(String(255), nullable=False)  # École de l'étudiant
+#     comment = Column(Text, nullable=False)  # Commentaire/témoignage
+#     rating = Column(Integer, default=5)  # Note sur 5 (optionnel)
+#     is_active = Column(Boolean, default=True)  # Publié ou non
+#     admin_id = Column(Integer, ForeignKey("admins.id"))  # Qui a ajouté
+#     created_at = Column(DateTime(timezone=True), server_default=func.now())
+#     updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
     
-    # Relations
-    admin = relationship("Admin", back_populates="testimonials")
+#     # Relations
+#     admin = relationship("Admin", back_populates="testimonials")

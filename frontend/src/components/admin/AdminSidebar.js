@@ -22,12 +22,6 @@ const AdminSidebar = ({ isOpen, onClose, currentPath, user, onLogout }) => {
       access: "all",
     },
     {
-      path: "/admin/announcements",
-      icon: "campaign",
-      label: "Annonces",
-      access: "superadmin", // Réservé aux super admins
-    },
-    {
       path: "/admin/students",
       icon: "people",
       label: "Étudiants",
@@ -40,34 +34,10 @@ const AdminSidebar = ({ isOpen, onClose, currentPath, user, onLogout }) => {
       access: "all",
     },
     {
-      path: "/admin/recruitment",
-      icon: "work",
-      label: "Recrutement",
-      access: "superadmin",
-    },
-    {
-      path: "/admin/applications",
-      icon: "assignment",
-      label: "Candidatures",
-      access: "superadmin",
-    },
-    {
       path: "/admin/manage-admins",
       icon: "admin_panel_settings",
       label: "Gestion Admins",
       access: "superadmin", // Réservé aux super admins
-    },
-    {
-      path: "/admin/testimonials",
-      icon: "forum",
-      label: "Témoignages",
-      access: "superadmin", // Réservé aux super admins
-    },
-    {
-      path: "/admin/cours-gratuits",
-      icon: "book",
-      label: "Cours Gratuits",
-      access: "superadmin", // Accessible à tous les admins (modifiez en "superadmin" si vous voulez le restreindre)
     },
   ]
 

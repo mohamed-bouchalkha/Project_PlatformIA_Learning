@@ -339,6 +339,14 @@
   position: relative;
   height: 140px; /* HAUTEUR RÉDUITE */
   overflow: hidden;
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  display: grid;
+  place-items: center;
+}
+
+.course-image-placeholder-modern {
+  font-size: 2.5rem;
+  opacity: 0.55;
 }
 
 .course-image-modern img {
