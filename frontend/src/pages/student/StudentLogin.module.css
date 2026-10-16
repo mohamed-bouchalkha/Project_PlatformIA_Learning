@@ -228,23 +228,6 @@
   position: relative;
 }
 
-.formGroup label::before {
-  content: '';
-  position: absolute;
-  left: -8px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 3px;
-  height: 0;
-  background: #3498db;
-  border-radius: 2px;
-  transition: height 0.3s ease;
-}
-
-.formGroup:focus-within label::before {
-  height: 100%;
-}
-
 .formGroup input {
   padding: 1rem 1.2rem;
   border: 2px solid #e8f4fd;

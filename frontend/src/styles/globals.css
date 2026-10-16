@@ -365,7 +365,6 @@ body {
 
 .why-choose-section .reason-card.featured::before {
   background: linear-gradient(90deg, #f97316, #fbbf24);
-  transform: scaleX(1);
 }
 
 .why-choose-section .reason-card.featured .reason-number {
