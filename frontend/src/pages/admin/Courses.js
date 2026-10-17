@@ -5,7 +5,7 @@ import AdminLayout from "../../components/admin/AdminLayout"
 import apiService from "../../utils/api"
 import "./Courses.css"
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = apiService.baseURL;
 
 const Courses = () => {
   const [courses, setCourses] = useState([])

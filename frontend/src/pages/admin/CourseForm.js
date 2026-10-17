@@ -5,7 +5,7 @@ import AdminLayout from "../../components/admin/AdminLayout"
 import apiService from "../../utils/api"
 import "./CourseForm.css"
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = apiService.baseURL;
 
 const CourseForm = () => {
   const { id } = useParams()
@@ -46,7 +46,7 @@ const CourseForm = () => {
         image_filename: course.image_filename || "",
       })
       if (course.image_url) {
-        setImagePreview(course.image_url)
+        setImagePreview(`${apiService.baseURL}${course.image_url}`)
       }
     } catch (err) {
       console.error("Erreur lors du chargement du cours:", err)
@@ -92,7 +92,8 @@ const CourseForm = () => {
         body: formData
       });
       if (!response.ok) {
-        throw new Error('Erreur lors du téléchargement de l\'image');
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.detail || `Erreur HTTP ${response.status} lors du téléchargement de l'image`)
       }
       console.log('Image téléchargée avec succès');
       return await response.json();

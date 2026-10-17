@@ -49,7 +49,7 @@ async def login_student(student_data: StudentLogin, db: Session = Depends(get_db
     from datetime import timedelta
     access_token_expires = timedelta(hours=24) 
     access_token = create_access_token(
-        data={"sub": student.email, "type": "student"}, 
+        data={"sub": str(student.id), "type": "student"}, 
         expires_delta=access_token_expires
     )
     

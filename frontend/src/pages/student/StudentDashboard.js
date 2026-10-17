@@ -6,7 +6,7 @@ import StudentLayout from "../../components/student/StudentLayout"
 import apiService from "../../utils/api"
 import "./StudentDashboard.css"
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = apiService.baseURL;
 
 const StudentDashboard = () => {
   const [courses, setCourses] = useState([])

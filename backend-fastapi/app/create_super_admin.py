@@ -1,7 +1,7 @@
 from app.database import SessionLocal
 from app.models import Admin
+from app.security import get_password_hash
 from sqlalchemy.orm import Session
-from passlib.hash import bcrypt
 
 def create_super_admin():
     db: Session = SessionLocal()
@@ -13,7 +13,7 @@ def create_super_admin():
             new_admin = Admin(
                 email="admin@e-learning.com",
                 name="Super Admin",
-                hashed_password=bcrypt.hash("adminpassword"),
+                hashed_password=get_password_hash("adminpassword"),
                 is_super_admin=True,
                 is_active=True
             )
